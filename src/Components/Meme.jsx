@@ -1,10 +1,19 @@
 import React from "react";
+import memeData from "../memeData";
+
+
 
 const Meme = () => {
 
-  const handleClick = () => {
- console.log("I was clicked !")
 
+    let [imageUrl, setImageUrl] = React.useState("")
+
+  const getMemeImage = () => {
+
+     let a = memeData.data.memes;
+     let randomNumber = Math.floor(Math.random() *  a.length);
+                //  memesArray[randomNumber].url
+        setImageUrl(a[randomNumber].url);
   }
 
 
@@ -20,8 +29,11 @@ const Meme = () => {
               <input type="text" placeholder="and take my money"></input>
               </div>
               
-              <button className="btn" onMouseOver={handleClick}>Get a new meme image</button>
+              <button className="btn" onClick={getMemeImage}>Get a new meme image</button>
+             
           </div>
+           
+              <img src={imageUrl} className="meme-image"></img>
       </div>
     </>
   );
